@@ -11,13 +11,28 @@ class App extends Component {
     showForm: false,
   };
 
+  handleAddFood = (food) => {
+    this.setState({
+      food: [food, ...this.state.food],
+    });
+  };
+
   handleShowForm = () => {
     this.setState({ showForm: true });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({ showForm: false });
+
+    const { name, calories, image } = e.target;
+    let newFood = {
+      name: name.value,
+      calories: calories.value,
+      image: image.value,
+    };
+    this.setState({ showForm: false }, () => {
+      this.handleAddFood(newFood);
+    });
   };
 
   render() {
