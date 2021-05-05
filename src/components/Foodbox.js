@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-import data from '../foods.json';
 import 'bulma/css/bulma.css';
 
 class Foodbox extends Component {
   render() {
-    const { name, calories, image, quantity } = this.props.anyfood;
+    const { name, calories, image } = this.props.anyfood;
 
     return (
       <div>
@@ -14,7 +13,7 @@ class Foodbox extends Component {
             <article className="media">
               <div className="media-left">
                 <figure className="image is-64x64">
-                  <img src={image} />
+                  <img src={image} alt="yummy food" />
                 </figure>
               </div>
               <div className="media-content">
@@ -31,7 +30,11 @@ class Foodbox extends Component {
                     <input className="input" type="number" value="1" />
                   </div>
                   <div className="control">
-                    <button className="button is-info">+</button>
+                    <form noValidate autoComplete="off">
+                      <button type="submit" className="button is-info">
+                        +
+                      </button>
+                    </form>
                   </div>
                 </div>
               </div>
